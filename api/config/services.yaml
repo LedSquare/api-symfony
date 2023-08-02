@@ -29,5 +29,13 @@ services:
             $itemProvider: '@api_platform.doctrine.orm.state.item_provider'
         # Uncomment only if autoconfiguration is disabled
         #tags: [ 'api_platform.state_provider' ]
+    App\State\BlogPostProcessor: ~
+        # Uncomment only if autoconfiguration is disabled
+        #tags: [ 'api_platform.state_processor' ]
+    App\State\UserProcessor:
+        bind:
+            $persistProcessor: '@api_platform.doctrine.orm.state.persist_processor'
+            $removeProcessor: '@api_platform.doctrine.orm.state.remove_processor'
+    
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
