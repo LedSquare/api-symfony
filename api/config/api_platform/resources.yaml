@@ -1,0 +1,5 @@
+resources:
+    App\Entity\Offer:
+        operations:
+            ApiPlatform\Metadata\GetCollection:
+                filters: ['offer.date_filter']

@@ -6,6 +6,15 @@
 parameters:
 
 services:
+    offer.search_filter:
+        parent: 'api_platform.doctrine.orm.search_filter'
+        arguments: [ { id: 'exact', price: 'exact', description: 'partial' } ]
+        tags:  [ 'api_platform.filter' ]
+        # The following are mandatory only if a _defaults section is defined with inverted values.
+        # You may want to isolate filters in a dedicated file to avoid adding the following lines (by adding them in the defaults section)
+        autowire: false
+        autoconfigure: false
+        public: false
 
     # default configuration for services in *this* file
     _defaults:
@@ -36,6 +45,7 @@ services:
         bind:
             $persistProcessor: '@api_platform.doctrine.orm.state.persist_processor'
             $removeProcessor: '@api_platform.doctrine.orm.state.remove_processor'
+    
     
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

@@ -5,7 +5,6 @@ namespace App\Entity;
 use ApiPlatform\Metadata\Get;
 use Doctrine\ORM\Mapping as ORM;
 use App\Dto\AnotherRepresentation;
-use ApiPlatform\Metadata\ApiResource;
 use App\State\BookRepresentationProvider;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -15,7 +14,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Book
 {
     #[ORM\Id, ORM\Column, ORM\GeneratedValue]
-    #[Assert\Isbn]    
+    #[Assert\Isbn]
     private ?int $id = null;
 
     #[ORM\Column(nullable: true)]
@@ -38,9 +37,9 @@ class Book
     #[Assert\NotNull]
     public ?\DateTimeImmutable $publicationDate = null;
 
-    #[ORM\OneToMany(targetEntity: Review::class, mappedBy:'book', cascade:['persist', 'remove'])]
+    #[ORM\OneToMany(targetEntity: Review::class, mappedBy: 'book', cascade: ['persist', 'remove'])]
     public iterable $reviews;
-    
+
     public function __construct()
     {
         $this->reviews = new ArrayCollection();
@@ -50,6 +49,3 @@ class Book
         return $this->id;
     }
 }
-
-
-?>

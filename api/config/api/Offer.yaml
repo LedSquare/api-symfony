@@ -1,0 +1,5 @@
+App\Entity\Offer:
+    # ...
+    operations:
+        ApiPlatform\Metadata\GetCollection:
+            filters: ['offer.search_filter']
