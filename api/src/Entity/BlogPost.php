@@ -2,10 +2,11 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Get;
 use App\State\BlogPostProvider;
 
-#[Get(provider: BlogPostProvider::class)]
+#[ApiResource(provider: BlogPostProvider::class)]
 class BlogPost
 {
 }

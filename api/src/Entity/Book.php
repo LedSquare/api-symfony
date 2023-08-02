@@ -3,21 +3,15 @@
 namespace App\Entity;
 
 use ApiPlatform\Metadata\Get;
-use ApiPlatform\Metadata\Post;
 use Doctrine\ORM\Mapping as ORM;
+use App\Dto\AnotherRepresentation;
 use ApiPlatform\Metadata\ApiResource;
+use App\State\BookRepresentationProvider;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 
+#[Get(output: AnotherRepresentation::class, provider: BookRepresentationProvider::class)]
 #[ORM\Entity]
-#[ApiResource(
-    routePrefix:'/someBooks', // Добавляет URL префикс 
-    operations: [
-        new Get(),
-        new Post(),
-    ]
-)
-]
 class Book
 {
     #[ORM\Id, ORM\Column, ORM\GeneratedValue]
