@@ -29,7 +29,7 @@ services:
             - '../src/DependencyInjection/'
             - '../src/Entity/'
             - '../src/Kernel.php'
-
+    
     App\State\BlogPostProvider: ~
         # Uncomment only if autoconfiguration is disabled
         #tags: [ 'api_platform.state_provider' ]
@@ -49,5 +49,6 @@ services:
     'App\Filter\RegexpFilter':
         arguments: [ '@doctrine', ~, '@?logger', { email: ~, anOtherProperty: ~ } ]
         tags: [ 'api_platform.filter' ]
+
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
