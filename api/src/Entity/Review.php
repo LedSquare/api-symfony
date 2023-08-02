@@ -10,7 +10,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Review
 {
     #[ORM\Id, ORM\Column, ORM\GeneratedValue]
-    
     private ?int $id = null;
 
     #[ORM\Column(type:'smallint')]

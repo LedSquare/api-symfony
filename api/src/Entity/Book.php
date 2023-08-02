@@ -2,13 +2,22 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\Post;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Metadata\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity]
-#[ApiResource]
+#[ApiResource(
+    routePrefix:'/someBooks', // Добавляет URL префикс 
+    operations: [
+        new Get(),
+        new Post(),
+    ]
+)
+]
 class Book
 {
     #[ORM\Id, ORM\Column, ORM\GeneratedValue]
