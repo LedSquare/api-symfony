@@ -2,17 +2,28 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Get;
 use Doctrine\ORM\Mapping as ORM;
 use App\Dto\AnotherRepresentation;
 use App\State\BookRepresentationProvider;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 #[Get(output: AnotherRepresentation::class, provider: BookRepresentationProvider::class)]
 #[ORM\Entity]
+#[ApiResource(validationContext: ['groups' => ['a', 'b']])]
 class Book
 {
+    #[Assert\NotBlank(groups: ['a'])]
+    public string $name;
+
+    #[ORM\Column]
+    #[Assert\NotBlank(groups: ['b'])]
+    public string $author = '';
+
+
     #[ORM\Id, ORM\Column, ORM\GeneratedValue]
     #[Assert\Isbn]
     private ?int $id = null;
@@ -28,10 +39,6 @@ class Book
     #[ORM\Column(type: 'text')]
     #[Assert\NotBlank]
     public string $description = '';
-
-    #[ORM\Column]
-    #[Assert\NotBlank]
-    public string $author = '';
 
     #[ORM\Column]
     #[Assert\NotNull]
