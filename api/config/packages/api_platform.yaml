@@ -1,12 +1,19 @@
-api_platform:
-    title: Hello API Platform
-    version: 1.0.0
-    # Mercure integration, remove if unwanted
-    mercure: ~
-    # Good cache defaults for REST APIs
-    defaults:
-        stateless: true
-        cache_headers:
-            vary: ['Content-Type', 'Authorization', 'Origin']
-        extra_properties:
-            standard_put: true
+# api_platform:
+#     title: Hello API Platform
+#     version: 1.0.0
+#     # Mercure integration, remove if unwanted
+#     mercure: ~
+#     # Good cache defaults for REST APIs
+#     defaults:
+#         stateless: true
+#         cache_headers:
+#             vary: ['Content-Type', 'Authorization', 'Origin']
+#         extra_properties:
+#             standard_put: true
+    # api/config/packages/api_platform.yaml
+doctrine:
+    orm:
+        filters:
+            user_filter:
+                class: App\Filter\UserFilter
+                enabled: true
