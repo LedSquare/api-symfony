@@ -9,7 +9,6 @@ use App\Dto\AnotherRepresentation;
 use App\State\BookRepresentationProvider;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Component\Validator\Constraints\NotBlank;
 
 #[Get(output: AnotherRepresentation::class, provider: BookRepresentationProvider::class)]
 #[ORM\Entity]
