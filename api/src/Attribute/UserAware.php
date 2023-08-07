@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Entity;
+namespace App\Attribute;
 
-use App\Attribute;
-use Doctrine\ORM\Mapping as ORM;
+use Attribute;
 
 #[Attribute(Attribute::TARGET_CLASS)]
-class UserAware
+final class UserAware
 {
     public $userFieldName;
 }

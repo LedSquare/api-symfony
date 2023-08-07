@@ -2,7 +2,7 @@
 
 namespace App\ElasticSearch;
 
-use ApiPlatform\Elasticsearch\Extension\RequestBodySearchCollectionExtensionInterface;
+use ApiPlatform\ElasticSearch\Extension\RequestBodySearchCollectionExtensionInterface;
 use ApiPlatform\Metadata\Operation;
 
 class AndOperatorFilterExtenstion implements RequestBodySearchCollectionExtensionInterface
