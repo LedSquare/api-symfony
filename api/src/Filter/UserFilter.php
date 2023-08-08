@@ -12,7 +12,7 @@ class UserFilter extends SQLFilter
     {
         $userAware = $targetEntity->getReflectionClass()->getAttributes(UserAware::class)[0] ?? null;
 
-        $fieldName - $userAware?->getArguments()['userFieldName'] ?? null;
+        $fieldName = $userAware?->getArguments()['userFieldName'] ?? null;
         if ($fieldName === '' || is_null($fieldName)){
             return '';
         }

@@ -2,17 +2,32 @@
 
 namespace App\Entity;
 
-use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\Put;
+use ApiPlatform\Metadata\Post;
+use ApiPlatform\Metadata\Delete;
 use Doctrine\ORM\Mapping as ORM;
 use App\Dto\AnotherRepresentation;
+use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\GetCollection;
 use App\State\BookRepresentationProvider;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[Get(output: AnotherRepresentation::class, provider: BookRepresentationProvider::class)]
 #[ORM\Entity]
-#[ApiResource(validationContext: ['groups' => ['a', 'b']])]
+#[ApiResource(
+    validationContext: ['groups' => ['a', 'b']],
+    operations: [
+        new GetCollection(
+            paginationMaximumItemsPerPage:10
+        ),
+        new Post(),
+        new Put(),
+        new Delete(),
+        new Get()
+    ],
+)]
 class Book
 {
     #[Assert\NotBlank(groups: ['a'])]
